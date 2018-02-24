@@ -1,5 +1,6 @@
 package com.jeetatl.samples.spring.sampleautoconfig.autoconfigure;
 
+import com.jeetatl.samples.spring.sampleautoconfig.bean.AutoCBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +26,11 @@ public class SampleAutoConfiguration {
     @Bean("sampleProp1")
     public String getSampleProp1() {
         return new String(this.properties.getProp1());
+    }
+
+    @Bean
+    public AutoCBean getAutoCBean() {
+        return new AutoCBean(properties.getProp2(), properties.getProp1());
     }
 
     @PostConstruct
